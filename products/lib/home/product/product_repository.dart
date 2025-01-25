@@ -6,7 +6,7 @@ class ProductRepository {
   final String apiUrl = "https://fakestoreapi.com/products";
 
   Future<List<ProductModel>> fetchProducts() async {
-    final response = await HTTP.get(Uri.parse(apiUrl));
+    final response = await http.get(Uri.parse(apiUrl));
 
     if (response.statusCode == 200) {
       List<dynamic> data = json.decode(response.body);

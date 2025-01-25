@@ -1,0 +1,20 @@
+import 'package:flutter/material.dart';
+
+class ProductViewModel extends ChangeNotifier {
+  final ProductRepository repository;
+  List<Product> products = [];
+  bool isLoading = true;
+
+  ProductViewModel(this.repository);
+
+  Future<void> fetchProducts() async {
+    try {
+      products = await repository.fetchProducts();
+    } catch (error) {
+      print("Error fetching products: $error");
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
+  }
+}
