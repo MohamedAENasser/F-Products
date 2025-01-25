@@ -20,10 +20,14 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(primarySwatch: Colors.blue),
-        home: HomeScreen(),
-      ),
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(primarySwatch: Colors.blue),
+          home: Container(
+            color: Colors.white,
+            child: SafeArea(
+              child: HomeScreen(),
+            ),
+          )),
     );
   }
 }
