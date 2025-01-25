@@ -3,24 +3,30 @@ import 'package:products/home/product_item.dart';
 
 class HomeScreen extends StatelessWidget {
   final List<ProductModel> products = [
-    const ProductModel(
+    ProductModel(
+        id: 0,
         image: 'assets/images/product1.png',
-        name: 'Product A',
+        title: 'Product A',
         description: 'Description for Product A',
         price: 2500,
-        review: 4.1),
-    const ProductModel(
+        category: '',
+        rating: Rating(rate: 4.1, count: 10.0)),
+    ProductModel(
+        id: 0,
         image: 'assets/images/product1.png',
-        name: 'Product B',
-        description: 'Description for Product B',
-        price: 3500,
-        review: 3.5),
-    const ProductModel(
+        title: 'Product N',
+        description: 'Description for Product A',
+        price: 2000,
+        category: '',
+        rating: Rating(rate: 3.1, count: 10.0)),
+    ProductModel(
+        id: 0,
         image: 'assets/images/product1.png',
-        name: 'Product C',
-        description: 'Description for Product C',
-        price: 3000,
-        review: 4.2),
+        title: 'Product VC',
+        description: 'Description for Product A',
+        price: 4500,
+        category: '',
+        rating: Rating(rate: 2.1, count: 10.0)),
   ];
 
   @override

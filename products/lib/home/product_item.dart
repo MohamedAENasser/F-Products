@@ -1,22 +1,40 @@
 import 'package:flutter/material.dart';
 
 class ProductModel {
+  final int id;
   final String image;
-  final String name;
-  final String description;
+  final String title;
   final double price;
-  final double review;
+  final String description;
+  final String category;
+  final Rating rating;
 
-  final bool isFavorite = false;
-
-  const ProductModel({
-    Key? key,
+  ProductModel({
+    required this.id,
     required this.image,
-    required this.name,
-    required this.description,
+    required this.title,
     required this.price,
-    required this.review,
+    required this.description,
+    required this.category,
+    required this.rating,
   });
+
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
+        id: json['id'],
+        image: json['image'],
+        title: json['title'],
+        price: json['price'].toDouble(),
+        description: json['description'],
+        category: json['category'],
+        rating: json['rating']);
+  }
+}
+
+class Rating {
+  final double rate;
+  final double count;
+  Rating({required this.rate, required this.count});
 }
 
 class ProductCard extends StatelessWidget {
@@ -71,7 +89,7 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    product.name,
+                    product.title,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 13),
                   ),
@@ -96,7 +114,7 @@ class ProductCard extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text("Review(${product.review})",
+                      Text("Review(${product.rating.rate})",
                           style: const TextStyle(color: Colors.black)),
                       Icon(
                         Icons.star_outlined,
