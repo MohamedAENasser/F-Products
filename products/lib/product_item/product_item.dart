@@ -3,13 +3,17 @@ import 'package:flutter/material.dart';
 class ProductModel {
   final String image;
   final String name;
+  final String description;
   final double price;
   final double review;
+
+  final bool isFavorite = false;
 
   const ProductModel({
     Key? key,
     required this.image,
     required this.name,
+    required this.description,
     required this.price,
     required this.review,
   });
@@ -43,16 +47,24 @@ class ProductCard extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.all(8),
                     child: Container(
-                      alignment: Alignment.topRight,
-                      child: Icon(
-                        Icons.heart_broken,
-                        color: Colors.blue,
-                        size: 20,
-                      ),
-                    ),
+                        alignment: Alignment.topRight,
+                        child: Container(
+                          width: 25,
+                          height: 25,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white,
+                          ),
+                          child: Icon(
+                            Icons.favorite_outline,
+                            color: Colors.blue,
+                            size: 20,
+                          ),
+                        )),
                   )
                 ],
               )),
+          Spacer(),
           Padding(
               padding: const EdgeInsets.all(8),
               child: Column(
@@ -61,7 +73,11 @@ class ProductCard extends StatelessWidget {
                   Text(
                     product.name,
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 16),
+                        fontWeight: FontWeight.bold, fontSize: 13),
+                  ),
+                  Text(
+                    product.description,
+                    style: const TextStyle(fontSize: 12),
                   ),
                   Row(
                     children: [
@@ -86,11 +102,18 @@ class ProductCard extends StatelessWidget {
                         Icons.star_outlined,
                         color: Color.fromARGB(255, 238, 219, 47),
                         size: 20,
+                      ),
+                      Spacer(),
+                      Icon(
+                        Icons.add_circle_outlined,
+                        color: Colors.blue,
+                        size: 30,
                       )
                     ],
                   )
                 ],
-              ))
+              )),
+          Spacer()
         ],
       ),
     );
