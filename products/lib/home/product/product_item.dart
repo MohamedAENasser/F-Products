@@ -105,13 +105,13 @@ class ProductCard extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text("EGP ${product.price * 0.75}",
+                      Text("EGP ${(product.price * 0.75).toStringAsFixed(2)}",
                           style: const TextStyle(
                               fontSize: 12, color: Colors.black)),
                       const SizedBox(
                         width: 8,
                       ),
-                      Text("${product.price} EGP",
+                      Text("${product.price.toStringAsFixed(2)} EGP",
                           style: const TextStyle(
                               decoration: TextDecoration.lineThrough,
                               fontSize: 10,
