@@ -21,12 +21,12 @@ class ProductModel {
 
 class ProductCard extends StatelessWidget {
   final ProductModel product;
-  const ProductCard({Key? key, required this.product}) : super(key: key);
+  const ProductCard({super.key, required this.product});
   @override
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: Colors.blue, width: 1),
+        side: const BorderSide(color: Colors.blue, width: 1),
         borderRadius: BorderRadius.circular(16),
       ),
       margin: const EdgeInsets.all(12),
