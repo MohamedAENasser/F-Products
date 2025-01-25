@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ProductModel {
-  final int id;
+  final num id;
   final String image;
   final String title;
   final double price;
@@ -27,14 +27,18 @@ class ProductModel {
         price: json['price'].toDouble(),
         description: json['description'],
         category: json['category'],
-        rating: json['rating']);
+        rating: Rating.fromJson(json['rating'] as Map<String, dynamic>));
   }
 }
 
 class Rating {
-  final double rate;
-  final double count;
+  final num rate;
+  final num count;
   Rating({required this.rate, required this.count});
+
+  factory Rating.fromJson(Map<String, dynamic> json) {
+    return Rating(rate: json['rate'], count: json['count']);
+  }
 }
 
 class ProductCard extends StatelessWidget {
@@ -56,24 +60,24 @@ class ProductCard extends StatelessWidget {
                   const BorderRadius.vertical(top: Radius.circular(16)),
               child: Stack(
                 children: [
-                  Image.asset(
+                  Image.network(
                     product.image,
                     height: 120,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     child: Container(
                         alignment: Alignment.topRight,
                         child: Container(
                           width: 25,
                           height: 25,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: Colors.white,
                           ),
-                          child: Icon(
+                          child: const Icon(
                             Icons.favorite_outline,
                             color: Colors.blue,
                             size: 20,
@@ -82,7 +86,7 @@ class ProductCard extends StatelessWidget {
                   )
                 ],
               )),
-          Spacer(),
+          const Spacer(),
           Padding(
               padding: const EdgeInsets.all(8),
               child: Column(
@@ -90,11 +94,13 @@ class ProductCard extends StatelessWidget {
                 children: [
                   Text(
                     product.title,
+                    maxLines: 2,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 13),
                   ),
                   Text(
                     product.description,
+                    maxLines: 3,
                     style: const TextStyle(fontSize: 12),
                   ),
                   Row(
@@ -102,7 +108,7 @@ class ProductCard extends StatelessWidget {
                       Text("EGP ${product.price * 0.75}",
                           style: const TextStyle(
                               fontSize: 12, color: Colors.black)),
-                      SizedBox(
+                      const SizedBox(
                         width: 8,
                       ),
                       Text("${product.price} EGP",
@@ -116,13 +122,13 @@ class ProductCard extends StatelessWidget {
                     children: [
                       Text("Review(${product.rating.rate})",
                           style: const TextStyle(color: Colors.black)),
-                      Icon(
+                      const Icon(
                         Icons.star_outlined,
                         color: Color.fromARGB(255, 238, 219, 47),
                         size: 20,
                       ),
-                      Spacer(),
-                      Icon(
+                      const Spacer(),
+                      const Icon(
                         Icons.add_circle_outlined,
                         color: Colors.blue,
                         size: 30,
@@ -131,7 +137,7 @@ class ProductCard extends StatelessWidget {
                   )
                 ],
               )),
-          Spacer()
+          const Spacer()
         ],
       ),
     );
