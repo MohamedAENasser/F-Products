@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:products/splash/splash_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:products/home/product/product_repository.dart';
 import 'package:products/home/product/product_view_model.dart';
-import 'package:products/home/home_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,14 +20,10 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(primarySwatch: Colors.blue),
-          home: Container(
-            color: Colors.white,
-            child: SafeArea(
-              child: HomeScreen(),
-            ),
-          )),
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(primarySwatch: Colors.blue),
+        home: const SplashScreen(),
+      ),
     );
   }
 }
